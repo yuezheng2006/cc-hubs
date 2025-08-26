@@ -1,102 +1,48 @@
 {
+  "$schema": "https://mintlify.com/schema.json",
   "name": "CC-Hubs",
   "description": "Claude Code Best Practices Hub - 一个全面的代码实践技巧社区",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
+  "theme": "mint",
+  "favicon": "/logo/light.svg",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
+    "dark": "#0D9373"
   },
-  "theme": "quill",
   "navigation": {
     "groups": [
       {
         "group": "开始使用",
         "pages": [
-          "introduction"
-        ]
-      },
-      {
-        "group": "安装与设置",
-        "pages": [
-          "setup/ctok-installation-guide",
-          "setup/ctok-commands-reference",
-          "setup/ctok-windows-environment"
+          "docs/introduction"
         ]
       },
       {
         "group": "指南与最佳实践",
         "pages": [
-          "guides/best-practices",
-          "guides/claude-code-cookbook",
-          "guides/claude-code-official-docs",
-          "guides/ctok-complete-guide",
-          "guides/ctok-23-practical-tips",
-          "guides/ctok-34-tips",
-          "guides/ctok-best-practices",
-          "guides/ctok-claude-code-guide",
-          "guides/ctok-vibe-workflow",
-          "guides/best-practices_builder-claude-code",
-          "guides/best-practices_cal-rueb-claude-code-best-practices",
-          "guides/best-practices_claude-code-best-practices",
-          "guides/best-practices_claude-code-is-my-computer",
-          "guides/best-practices_claude-code-setup-tips",
-          "guides/best-practices_field-notes-shipping-real-code-claude",
-          "guides/best-practices_how-i-use-claude-code",
-          "guides/best-practices_karpathy-llm-coding-evolution",
-          "guides/best-practices_onevcat-claude-code-experience",
-          "guides/best-practices_six-weeks-of-claude-code",
-          "guides/en"
-        ]
-      },
-      {
-        "group": "高级功能",
-        "pages": [
-          "advanced/advanced",
-          "advanced/sub-agents",
-          "advanced/advanced_claude-code-reverse-analysis",
-          "advanced/advanced_compounding-engineering",
-          "advanced/advanced_decoding-claude-code-analysis",
-          "advanced/sub-agents_gemini-cli-subagent-tutorial"
+          "docs/guides/claude-code-official-docs",
+          "docs/guides/claude-code-cookbook",
+          "docs/guides/best-practices",
+          "docs/guides/community-tips"
         ]
       },
       {
         "group": "工具与扩展",
         "pages": [
-          "tools/tools",
-          "tools/ctok-subagents-guide",
-          "tools/ctok-version-comparison",
-          "tools/tools_ccpm-claude-code-project-manager",
-          "tools/tools_claude-code-router",
-          "tools/tools_claude-code-templates",
-          "tools/tools_context-engineering",
-          "tools/tools_cui-web-ui",
-          "tools/tools_happy-mobile-claude-code-client",
-          "tools/tools_you-are-not-right-hook"
+          "docs/tools/tools"
         ]
       },
       {
-        "group": "集成与兼容",
+        "group": "高级主题",
         "pages": [
-          "integrations/cursor",
-          "integrations/cursor_building-cursor-with-cursor"
+          "docs/advanced/advanced",
+          "docs/advanced/sub-agents"
         ]
       },
       {
-        "group": "社区技巧",
+        "group": "集成",
         "pages": [
-          "community/ctok-community",
-          "guides/community-tips",
-          "guides/community-tips_claude-code-life-os",
-          "guides/community-tips_code-simplifier-agent",
-          "guides/community-tips_fradser-trust-init-command"
+          "docs/integrations/cursor"
         ]
       }
     ]
