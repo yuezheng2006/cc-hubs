@@ -1,0 +1,343 @@
+name: 代码质量检查
+
+# 触发条件
+on:
+  # Pull Request事件
+  pull_request:
+    branches: [ main, develop ]
+    types: [opened, synchronize, reopened]
+  
+  # 推送到主要分支
+  push:
+    branches: [ main, develop ]
+  
+  # 手动触发
+  workflow_dispatch:
+
+# 环境变量
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '8'
+
+# 作业定义
+jobs:
+  # 代码质量检查
+  quality-check:
+    name: 代码质量检查
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      # 设置Node.js环境
+      - name: 设置Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      # 设置pnpm
+      - name: 设置pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      # 缓存依赖
+      - name: 缓存依赖
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      
+      # 安装依赖
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+      
+      # 代码格式检查
+      - name: 代码格式检查
+        run: |
+          echo "🔍 检查代码格式..."
+          pnpm run format:check || {
+            echo "❌ 代码格式检查失败"
+            echo "💡 请运行 'pnpm run format' 修复格式问题"
+            exit 1
+          }
+      
+      # ESLint检查
+      - name: ESLint检查
+        run: |
+          echo "🔍 运行ESLint检查..."
+          pnpm run lint || {
+            echo "❌ ESLint检查失败"
+            echo "💡 请修复上述代码质量问题"
+            exit 1
+          }
+      
+      # TypeScript类型检查
+      - name: TypeScript类型检查
+        run: |
+          echo "🔍 运行TypeScript类型检查..."
+          pnpm run type-check || {
+            echo "❌ TypeScript类型检查失败"
+            echo "💡 请修复上述类型错误"
+            exit 1
+          }
+      
+      # 运行测试
+      - name: 运行测试
+        run: |
+          echo "🧪 运行测试套件..."
+          pnpm run test || {
+            echo "❌ 测试失败"
+            exit 1
+          }
+      
+      # 构建检查
+      - name: 构建检查
+        run: |
+          echo "🔨 检查构建过程..."
+          pnpm run build || {
+            echo "❌ 构建失败"
+            exit 1
+          }
+      
+      # 文档验证
+      - name: 文档验证
+        run: |
+          echo "📋 验证文档质量..."
+          node scripts/content-manager.js validate || {
+            echo "⚠️ 文档验证发现问题，请查看报告"
+            # 不让文档问题阻止流程，只是警告
+          }
+      
+      # 上传测试报告
+      - name: 上传测试报告
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: |
+            coverage/
+            test-results/
+            docs/_generated/reports/
+          retention-days: 7
+
+  # 安全扫描
+  security-scan:
+    name: 安全扫描
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      # 设置Node.js环境
+      - name: 设置Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      # 设置pnpm
+      - name: 设置pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      # 安装依赖
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+      
+      # 依赖安全扫描
+      - name: 依赖安全扫描
+        run: |
+          echo "🔒 扫描依赖安全漏洞..."
+          pnpm audit --audit-level moderate || {
+            echo "⚠️ 发现安全漏洞，请及时更新依赖"
+            # 不阻止流程，但会在PR中显示警告
+          }
+      
+      # CodeQL分析
+      - name: 初始化CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+      
+      - name: 执行CodeQL分析
+        uses: github/codeql-action/analyze@v2
+
+  # 性能检查
+  performance-check:
+    name: 性能检查
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      # 设置Node.js环境
+      - name: 设置Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      # 设置pnpm
+      - name: 设置pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      # 安装依赖
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+      
+      # 构建项目
+      - name: 构建项目
+        run: pnpm run build
+      
+      # 分析构建产物大小
+      - name: 分析构建产物大小
+        run: |
+          echo "📊 分析构建产物大小..."
+          
+          # 检查构建目录大小
+          if [ -d "dist" ]; then
+            build_size=$(du -sh dist | cut -f1)
+            echo "📦 构建产物总大小: $build_size"
+            
+            # 列出最大的文件
+            echo "📋 最大的构建文件:"
+            find dist -type f -exec du -h {} + | sort -rh | head -10
+          fi
+          
+          # 检查node_modules大小（开发环境）
+          if [ -d "node_modules" ]; then
+            deps_size=$(du -sh node_modules | cut -f1)
+            echo "📚 依赖大小: $deps_size"
+          fi
+      
+      # 运行性能测试（如果存在）
+      - name: 运行性能测试
+        run: |
+          if [ -f "scripts/performance-test.js" ]; then
+            echo "⚡ 运行性能测试..."
+            node scripts/performance-test.js
+          else
+            echo "ℹ️ 未找到性能测试脚本"
+          fi
+
+  # PR评论
+  pr-comment:
+    name: PR评论
+    runs-on: ubuntu-latest
+    needs: [quality-check, security-scan, performance-check]
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      # 生成质量报告评论
+      - name: 生成质量报告评论
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const qualityResult = '${{ needs.quality-check.result }}';
+            const securityResult = '${{ needs.security-scan.result }}';
+            const performanceResult = '${{ needs.performance-check.result }}';
+            
+            const getStatusEmoji = (result) => {
+              switch(result) {
+                case 'success': return '✅';
+                case 'failure': return '❌';
+                case 'cancelled': return '⏹️';
+                default: return '⚠️';
+              }
+            };
+            
+            const comment = `
+            ## 🔍 代码质量检查报告
+            
+            | 检查项目 | 状态 | 结果 |
+            |---------|------|------|
+            | 代码质量检查 | ${getStatusEmoji(qualityResult)} | ${qualityResult} |
+            | 安全扫描 | ${getStatusEmoji(securityResult)} | ${securityResult} |
+            | 性能检查 | ${getStatusEmoji(performanceResult)} | ${performanceResult} |
+            
+            ### 📋 检查详情
+            
+            ${qualityResult === 'success' ? '✅ 代码质量检查通过' : '❌ 代码质量检查失败，请查看详细日志'}
+            ${securityResult === 'success' ? '✅ 安全扫描通过' : '⚠️ 安全扫描发现问题，请查看详细报告'}
+            ${performanceResult === 'success' ? '✅ 性能检查通过' : '⚠️ 性能检查发现问题，请查看详细报告'}
+            
+            ### 💡 建议
+            
+            - 确保所有测试通过后再合并
+            - 关注安全漏洞并及时修复
+            - 监控构建产物大小，避免过度膨胀
+            - 保持代码格式一致性
+            
+            ---
+            *此报告由 GitHub Actions 自动生成*
+            `;
+            
+            // 查找现有评论
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('代码质量检查报告')
+            );
+            
+            if (botComment) {
+              // 更新现有评论
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: comment
+              });
+            } else {
+              // 创建新评论
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+            }
+
+  # 总结作业
+  summary:
+    name: 检查总结
+    runs-on: ubuntu-latest
+    needs: [quality-check, security-scan, performance-check]
+    if: always()
+    
+    steps:
+      - name: 输出检查总结
+        run: |
+          echo "📊 代码质量检查总结"
+          echo "========================"
+          echo "代码质量: ${{ needs.quality-check.result }}"
+          echo "安全扫描: ${{ needs.security-scan.result }}"
+          echo "性能检查: ${{ needs.performance-check.result }}"
+          echo "========================"
+          
+          # 检查是否所有检查都通过
+          if [ "${{ needs.quality-check.result }}" = "success" ] && 
+             [ "${{ needs.security-scan.result }}" = "success" ] && 
+             [ "${{ needs.performance-check.result }}" = "success" ]; then
+            echo "✅ 所有检查通过！"
+            exit 0
+          else
+            echo "❌ 部分检查失败，请查看详细日志"
+            exit 1
+          fi

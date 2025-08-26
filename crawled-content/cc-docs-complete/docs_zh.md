@@ -1,0 +1,199 @@
+[Killer Code](/)
+
+Search
+
+⌘K
+
+[Best Practices](/docs)[Cookbook](https://github.com/foreveryh/claude-code-cookbook)[Official Docs](https://claude.ai/code)[Build with Claude](https://www.anthropic.com/learn/build-with-claude)[Author](https://x.com/Stephen4171127)[首页](/docs)
+
+[Claude Code Documentation](/docs/en)
+
+[Claude Code 文档中心](/docs/zh)
+
+[高级](/docs/zh/advanced)
+
+[最佳实践](/docs/zh/best-practices)
+
+[社区技巧](/docs/zh/community-tips)
+
+[Cursor](/docs/zh/cursor)
+
+[子代理](/docs/zh/sub-agents)
+
+[工具](/docs/zh/tools)
+
+# Claude Code 文档中心
+
+Claude Code 官方文档、指南、教程和最佳实践
+
+# [Claude Code 文档中心](#claude-code-文档中心)
+
+欢迎来到 Claude Code 文档中心！这里提供全面的 Claude Code 文档、指南、教程和最佳实践，帮助您充分利用 AI 辅助编程的强大功能。
+
+## [什么是 Claude Code？](#什么是-claude-code)
+
+Claude Code 是 Anthropic 官方的 AI 辅助编程 CLI 工具。它是一个基于终端的开发工具，具有文件管理、代码分析、多模型支持和 MCP 服务器集成等功能。
+
+### [主要功能](#主要功能)
+
+*   **代码分析**：深入理解项目结构和代码逻辑
+*   **功能开发**：从零开始创建新功能
+*   **代码重构**：优化现有代码结构
+*   **调试支持**：快速定位和修复问题
+*   **测试编写**：生成全面的测试用例
+*   **文档生成**：自动创建技术文档
+*   **多语言支持**：支持几乎所有编程语言和框架
+
+## [快速开始](#快速开始)
+
+### [安装 Claude Code](#安装-claude-code)
+
+```
+npm install -g @anthropic-ai/claude-code
+```
+
+**系统要求**：
+
+*   Node.js 18.0+
+*   Claude Pro 订阅或 API 密钥
+*   Windows 用户需要 WSL2
+
+### [开始使用](#开始使用)
+
+1.  **导航到项目目录**
+    
+    ```
+    cd your-project
+    ```
+    
+2.  **启动 Claude Code**
+    
+    ```
+    claude
+    ```
+    
+3.  **询问项目信息**
+    
+    ```
+    explain what this repo is about
+    ```
+    
+
+## [核心功能](#核心功能)
+
+### [AI 辅助开发](#ai-辅助开发)
+
+Claude Code 通过自然语言交互，帮助您完成各种开发任务：
+
+*   **代码解释**：理解复杂的代码逻辑
+*   **功能实现**：从需求描述到完整实现
+*   **问题诊断**：快速定位和解决技术问题
+*   **最佳实践**：遵循行业标准和最佳实践
+
+### [多文件操作](#多文件操作)
+
+Claude Code 能够同时处理多个文件，理解项目整体结构：
+
+*   **跨文件分析**：理解文件间的依赖关系
+*   **批量修改**：同时更新多个相关文件
+*   **重构支持**：安全地重构代码结构
+
+### [终端集成](#终端集成)
+
+完全集成到您的开发工作流程中：
+
+*   **无缝集成**：与现有开发工具完美配合
+*   **版本控制**：直接与 Git 交互
+*   **构建工具**：集成 npm、yarn 等构建工具
+
+## [使用场景](#使用场景)
+
+### [初学者友好](#初学者友好)
+
+*   使用自然语言命令，无需复杂配置
+*   从简单请求开始：`explain this code` 或 `create a hello world file`
+*   边学边做，通过实践学习编程概念
+
+### [专业开发](#专业开发)
+
+*   处理复杂的多文件项目
+*   高级代码分析和重构
+*   自动化测试和文档生成
+*   团队协作和代码审查
+
+### [学习编程](#学习编程)
+
+*   通过 AI 辅助理解编程概念
+*   实时获取编程建议和最佳实践
+*   从错误中学习，获得详细解释
+
+## [定价方案](#定价方案)
+
+Claude Code 提供多种定价选择：
+
+*   **Claude Pro**：$20/月
+*   **Claude Max 5x**：$100/月
+*   **Claude Max 20x**：$200/月
+*   **API 按使用付费**：$0.25-75/百万 tokens
+
+## [平台支持](#平台支持)
+
+### [Windows](#windows)
+
+*   通过 WSL2 运行
+*   与 Visual Studio Code 完美集成
+*   支持完整的 Linux 开发环境
+
+### [macOS](#macos)
+
+*   原生支持，性能优异
+*   简单的 npm 安装
+*   无需额外配置
+
+### [Linux](#linux)
+
+*   最佳性能表现
+*   直接系统访问
+*   完整的终端集成
+
+## [社区资源](#社区资源)
+
+### [官方资源](#官方资源)
+
+*   [官方 Claude Code 文档](https://docs.anthropic.com/claude/docs/claude-code)
+
+### [社区支持](#社区支持)
+
+*   [r/ClaudeAI Reddit 社区](https://reddit.com/r/ClaudeAI)
+*   [ClaudeLog Community](https://claudelog.com)
+*   [Awesome Claude Code](https://github.com/hesreallyhim/awesome-claude-code)
+
+## [下一步](#下一步)
+
+[
+
+### 最佳实践
+
+](/docs/zh/best-practices)
+
+* * *
+
+_Claude Code 由 Anthropic 开发，是 AI 辅助编程领域的领先工具。通过自然语言交互和强大的上下文理解能力，Claude Code 正在重新定义软件开发的工作方式。_
+
+[
+
+Claude Code Hook: Preventing敷衍性回复
+
+A hook script for Claude Code to prevent敷衍性回复, improving conversation quality by detecting and modifying 'you are right' expressions
+
+](/docs/en/tools/you-are-not-right-hook)[
+
+高级
+
+ClaudeCode 的高级技术和概念
+
+](/docs/zh/advanced)
+
+### On this page
+
+[Claude Code 文档中心](#claude-code-文档中心)[什么是 Claude Code？](#什么是-claude-code)[主要功能](#主要功能)[快速开始](#快速开始)[安装 Claude Code](#安装-claude-code)[开始使用](#开始使用)[核心功能](#核心功能)[AI 辅助开发](#ai-辅助开发)[多文件操作](#多文件操作)[终端集成](#终端集成)[使用场景](#使用场景)[初学者友好](#初学者友好)[专业开发](#专业开发)[学习编程](#学习编程)[定价方案](#定价方案)[平台支持](#平台支持)[Windows](#windows)[macOS](#macos)[Linux](#linux)[社区资源](#社区资源)[官方资源](#官方资源)[社区支持](#社区支持)[下一步](#下一步)

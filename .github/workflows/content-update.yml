@@ -1,0 +1,316 @@
+name: 内容更新和部署
+
+# 触发条件
+on:
+  # 定时任务：每天UTC时间02:00（北京时间10:00）执行
+  schedule:
+    - cron: '0 2 * * *'
+  
+  # 手动触发
+  workflow_dispatch:
+    inputs:
+      crawl_ctok:
+        description: '爬取ctok.ai内容'
+        required: false
+        default: 'true'
+        type: boolean
+      crawl_cookbook:
+        description: '爬取cookbook内容'
+        required: false
+        default: 'true'
+        type: boolean
+      force_update:
+        description: '强制更新所有内容'
+        required: false
+        default: 'false'
+        type: boolean
+  
+  # 推送到main分支时触发（仅限文档相关文件）
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+      - 'mint.json'
+      - '.github/workflows/**'
+
+# 环境变量
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '8'
+
+# 作业定义
+jobs:
+  # 内容爬取作业
+  crawl-content:
+    name: 爬取和更新内容
+    runs-on: ubuntu-latest
+    
+    # 权限设置
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    # 输出变量
+    outputs:
+      content-updated: ${{ steps.check-changes.outputs.content-updated }}
+      commit-sha: ${{ steps.commit-changes.outputs.commit-sha }}
+    
+    steps:
+      # 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 设置Node.js环境
+      - name: 设置Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      # 设置pnpm
+      - name: 设置pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      # 获取pnpm缓存目录
+      - name: 获取pnpm缓存目录
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      
+      # 缓存依赖
+      - name: 缓存依赖
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      
+      # 安装依赖
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+      
+      # 创建备份
+      - name: 创建内容备份
+        run: |
+          mkdir -p backups
+          timestamp=$(date +"%Y%m%d_%H%M%S")
+          cp -r docs "backups/docs_backup_${timestamp}"
+          echo "BACKUP_TIMESTAMP=${timestamp}" >> $GITHUB_ENV
+      
+      # 爬取ctok.ai内容
+      - name: 爬取ctok.ai内容
+        if: github.event.inputs.crawl_ctok != 'false'
+        run: |
+          echo "🔄 开始爬取ctok.ai内容..."
+          node scripts/crawlers/ctok-crawler.js
+        env:
+          FORCE_UPDATE: ${{ github.event.inputs.force_update }}
+      
+      # 爬取cookbook内容
+      - name: 爬取cookbook内容
+        if: github.event.inputs.crawl_cookbook != 'false'
+        run: |
+          echo "🔄 开始爬取cookbook内容..."
+          node scripts/crawlers/cookbook-crawler.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FORCE_UPDATE: ${{ github.event.inputs.force_update }}
+      
+      # 处理和验证内容
+      - name: 处理和验证内容
+        run: |
+          echo "📝 处理和验证内容..."
+          node scripts/content-manager.js build --no-backup
+      
+      # 检查内容变更
+      - name: 检查内容变更
+        id: check-changes
+        run: |
+          if git diff --quiet HEAD -- docs/; then
+            echo "content-updated=false" >> $GITHUB_OUTPUT
+            echo "📋 没有检测到内容变更"
+          else
+            echo "content-updated=true" >> $GITHUB_OUTPUT
+            echo "✅ 检测到内容变更"
+            git diff --stat HEAD -- docs/
+          fi
+      
+      # 提交变更
+      - name: 提交内容变更
+        id: commit-changes
+        if: steps.check-changes.outputs.content-updated == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # 添加变更的文件
+          git add docs/
+          git add docs/_generated/ || true
+          
+          # 生成提交信息
+          commit_msg="🤖 自动更新内容 ($(date '+%Y-%m-%d %H:%M:%S'))"
+          
+          # 添加详细信息
+          if [ "${{ github.event.inputs.crawl_ctok }}" != "false" ]; then
+            commit_msg="${commit_msg}\n\n- 更新ctok.ai工作流程内容"
+          fi
+          
+          if [ "${{ github.event.inputs.crawl_cookbook }}" != "false" ]; then
+            commit_msg="${commit_msg}\n- 更新cookbook最佳实践内容"
+          fi
+          
+          # 提交变更
+          git commit -m "${commit_msg}"
+          
+          # 推送变更
+          git push
+          
+          # 输出提交SHA
+          commit_sha=$(git rev-parse HEAD)
+          echo "commit-sha=${commit_sha}" >> $GITHUB_OUTPUT
+          echo "📤 内容变更已提交: ${commit_sha}"
+      
+      # 上传备份文件（如果有变更）
+      - name: 上传备份文件
+        if: steps.check-changes.outputs.content-updated == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: content-backup-${{ env.BACKUP_TIMESTAMP }}
+          path: backups/
+          retention-days: 30
+      
+      # 上传处理报告
+      - name: 上传处理报告
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: processing-reports
+          path: |
+            docs/_generated/reports/
+            docs/_generated/indexes/
+          retention-days: 7
+
+  # 构建和部署作业
+  build-and-deploy:
+    name: 构建和部署
+    runs-on: ubuntu-latest
+    needs: crawl-content
+    if: needs.crawl-content.outputs.content-updated == 'true' || github.event_name == 'push'
+    
+    steps:
+      # 检出代码（使用最新的提交）
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.crawl-content.outputs.commit-sha || github.sha }}
+      
+      # 设置Node.js环境
+      - name: 设置Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      # 设置pnpm
+      - name: 设置pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      # 缓存依赖
+      - name: 缓存依赖
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      
+      # 安装依赖
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+      
+      # 构建项目
+      - name: 构建项目
+        run: |
+          echo "🔨 开始构建项目..."
+          pnpm run build
+      
+      # 部署到Vercel
+      - name: 部署到Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./
+
+  # 通知作业
+  notify:
+    name: 发送通知
+    runs-on: ubuntu-latest
+    needs: [crawl-content, build-and-deploy]
+    if: always()
+    
+    steps:
+      # 发送成功通知
+      - name: 发送成功通知
+        if: needs.build-and-deploy.result == 'success'
+        run: |
+          echo "✅ 内容更新和部署成功完成！"
+          echo "📊 更新统计:"
+          echo "  - 内容已更新: ${{ needs.crawl-content.outputs.content-updated }}"
+          echo "  - 提交SHA: ${{ needs.crawl-content.outputs.commit-sha }}"
+          echo "  - 触发方式: ${{ github.event_name }}"
+      
+      # 发送失败通知
+      - name: 发送失败通知
+        if: failure()
+        run: |
+          echo "❌ 工作流执行失败！"
+          echo "📋 失败信息:"
+          echo "  - 爬取作业: ${{ needs.crawl-content.result }}"
+          echo "  - 部署作业: ${{ needs.build-and-deploy.result }}"
+          echo "  - 触发方式: ${{ github.event_name }}"
+      
+      # 创建Issue（如果失败）
+      - name: 创建失败Issue
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const title = `🚨 自动化工作流失败 - ${new Date().toISOString().split('T')[0]}`;
+            const body = `
+            ## 工作流执行失败
+            
+            **触发方式**: ${{ github.event_name }}
+            **运行ID**: ${{ github.run_id }}
+            **提交SHA**: ${{ github.sha }}
+            
+            ### 作业状态
+            - 内容爬取: ${{ needs.crawl-content.result }}
+            - 构建部署: ${{ needs.build-and-deploy.result }}
+            
+            ### 可能的解决方案
+            1. 检查网络连接和外部API状态
+            2. 验证环境变量和密钥配置
+            3. 查看详细的工作流日志
+            4. 检查依赖项是否有更新
+            
+            **自动生成于**: ${new Date().toISOString()}
+            `;
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['bug', 'automation', 'high-priority']
+            });

@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-08-26T09:25:23.233Z",
+  "totalUrls": 13,
+  "successfulCrawls": 0,
+  "failedCrawls": 13,
+  "results": [
+    {
+      "url": "https://docs.ctok.ai/claude-code-commands-guide",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-setup-ctok",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-windows-env-setup",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-34-tips",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-complete-guide",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-best-practices",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-vibe-coding-workflow",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-subagents-evolution",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-23-practical-tips-goodbye-cursor",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-max-versions",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/en/",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/claude-code-group",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "url": "https://docs.ctok.ai/",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    }
+  ]
+}

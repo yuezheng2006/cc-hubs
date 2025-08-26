@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "totalSites": 3,
+    "analyzedAt": "2025-08-26T09:13:00.313Z",
+    "totalLinksFound": 0
+  },
+  "results": [
+    {
+      "site": "ctok-docs",
+      "baseUrl": "https://docs.ctok.ai/",
+      "totalLinks": 0,
+      "visitedPages": 1,
+      "allLinks": [],
+      "errors": []
+    },
+    {
+      "site": "claude-code-docs",
+      "baseUrl": "https://cc.deeptoai.com/docs/zh",
+      "totalLinks": 0,
+      "visitedPages": 1,
+      "allLinks": [],
+      "errors": []
+    },
+    {
+      "site": "cookbook-github",
+      "baseUrl": "https://github.com/foreveryh/claude-code-cookbook",
+      "totalLinks": 0,
+      "visitedPages": 1,
+      "allLinks": [],
+      "errors": []
+    }
+  ]
+}

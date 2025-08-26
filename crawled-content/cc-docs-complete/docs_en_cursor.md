@@ -1,0 +1,84 @@
+[Killer Code](/)
+
+Search
+
+⌘K
+
+[Best Practices](/docs)[Cookbook](https://github.com/foreveryh/claude-code-cookbook)[Official Docs](https://claude.ai/code)[Build with Claude](https://www.anthropic.com/learn/build-with-claude)[Author](https://x.com/Stephen4171127)[首页](/docs)
+
+[Claude Code Documentation](/docs/en)
+
+[Advanced](/docs/en/advanced)
+
+[Best Practices](/docs/en/best-practices)
+
+[Community Tips](/docs/en/community-tips)
+
+[Cursor](/docs/en/cursor)
+
+[Building Cursor with Cursor: A Real-World Example](/docs/en/cursor/building-cursor-with-cursor)
+
+[Sub Agents](/docs/en/sub-agents)
+
+[Tools](/docs/en/tools)
+
+[Claude Code 文档中心](/docs/zh)
+
+[Claude Code Documentation](/docs/en)
+
+# Cursor
+
+Learn about Cursor IDE and its integration with ClaudeCode
+
+# [Cursor](#cursor)
+
+Welcome to the Cursor section! Here you'll find valuable resources and guides about Cursor.
+
+## [What You'll Find Here](#what-youll-find-here)
+
+This section contains:
+
+*   **Practical Guides**: Detailed usage guides for Cursor
+*   **Best Practices**: Proven best practices and techniques
+*   **Case Studies**: Real-world application examples
+*   **Advanced Tips**: Advanced techniques to improve efficiency
+
+## [Featured Articles](#featured-articles)
+
+[
+
+### Building Cursor with Cursor: A Real-World Example
+
+A detailed case study of using Cursor AI to build Cursor itself, including challenges, failures, and lessons learned about AI-assisted development.
+
+](/docs/en/cursor/building-cursor-with-cursor)
+
+## [Getting Started](#getting-started)
+
+Whether you're a beginner or an experienced user, these articles will help you better understand and use Cursor.
+
+## [Contributing](#contributing)
+
+Have great content to share? We welcome community contributions! Please follow our contribution guidelines to help make this resource even better.
+
+* * *
+
+_Explore these articles to enhance your Cursor experience!_
+
+[
+
+FradSer: Trust the /init Command
+
+Learn proven strategies for maximizing Claude Code effectiveness with practical tips from community expert FradSer
+
+](/docs/en/community-tips/fradser-trust-init-command)[
+
+Building Cursor with Cursor: A Real-World Example
+
+A detailed case study of using Cursor AI to build Cursor itself, including challenges, failures, and lessons learned about AI-assisted development.
+
+](/docs/en/cursor/building-cursor-with-cursor)
+
+### On this page
+
+[Cursor](#cursor)[What You'll Find Here](#what-youll-find-here)[Featured Articles](#featured-articles)[Getting Started](#getting-started)[Contributing](#contributing)

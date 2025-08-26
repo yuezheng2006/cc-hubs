@@ -1,0 +1,214 @@
+{
+  "timestamp": "2025-08-26T09:21:14.156Z",
+  "stats": {
+    "total": 32,
+    "success": 32,
+    "failed": 0,
+    "categories": {
+      "guides": 16,
+      "advanced": 6,
+      "integrations": 2,
+      "tools": 8
+    }
+  },
+  "results": [
+    {
+      "source": "docs_zh.md",
+      "target": "docs/guides/.mdx",
+      "category": "guides",
+      "title": "Claude Code 文档中心 | Killer Code"
+    },
+    {
+      "source": "docs_zh_advanced.md",
+      "target": "docs/advanced/advanced.mdx",
+      "category": "advanced",
+      "title": "高级 | Killer Code"
+    },
+    {
+      "source": "docs_zh_advanced_claude-code-reverse-analysis.md",
+      "target": "docs/advanced/advanced_claude-code-reverse-analysis.mdx",
+      "category": "advanced",
+      "title": "手把手教你逆向Claude Code：如何监控AI每一次'内心独白'？ | Killer Code"
+    },
+    {
+      "source": "docs_zh_advanced_compounding-engineering.md",
+      "target": "docs/advanced/advanced_compounding-engineering.mdx",
+      "category": "advanced",
+      "title": "复合式工程：构建自我改进的开发系统 | Killer Code"
+    },
+    {
+      "source": "docs_zh_advanced_decoding-claude-code-analysis.md",
+      "target": "docs/advanced/advanced_decoding-claude-code-analysis.mdx",
+      "category": "advanced",
+      "title": "是什么让 Claude Code 如此出色（以及如何在你的智能体中重现这种魔力）!? | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices.md",
+      "target": "docs/guides/best-practices.mdx",
+      "category": "guides",
+      "title": "最佳实践 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_builder-claude-code.md",
+      "target": "docs/guides/best-practices_builder-claude-code.mdx",
+      "category": "guides",
+      "title": "我如何使用 Claude Code（+ 我的最佳技巧） | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_cal-rueb-claude-code-best-practices.md",
+      "target": "docs/guides/best-practices_cal-rueb-claude-code-best-practices.mdx",
+      "category": "guides",
+      "title": "Cal Rueb 的 Claude Code 最佳实践 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_claude-code-best-practices.md",
+      "target": "docs/guides/best-practices_claude-code-best-practices.mdx",
+      "category": "guides",
+      "title": "Claude Code 最佳实践 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_claude-code-is-my-computer.md",
+      "target": "docs/guides/best-practices_claude-code-is-my-computer.mdx",
+      "category": "guides",
+      "title": "Claude Code 就是我的电脑 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_claude-code-setup-tips.md",
+      "target": "docs/guides/best-practices_claude-code-setup-tips.mdx",
+      "category": "guides",
+      "title": "掌握 Claude Code 的 33 个必知设置技巧 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_field-notes-shipping-real-code-claude.md",
+      "target": "docs/guides/best-practices_field-notes-shipping-real-code-claude.mdx",
+      "category": "guides",
+      "title": "使用 Claude 生产真实代码的实战笔记 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_how-i-use-claude-code.md",
+      "target": "docs/guides/best-practices_how-i-use-claude-code.mdx",
+      "category": "guides",
+      "title": "我如何使用 Claude Code | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_karpathy-llm-coding-evolution.md",
+      "target": "docs/guides/best-practices_karpathy-llm-coding-evolution.mdx",
+      "category": "guides",
+      "title": "Andrej Karpathy 谈 LLM 辅助编程的演进：哲学与实践的融合 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_onevcat-claude-code-experience.md",
+      "target": "docs/guides/best-practices_onevcat-claude-code-experience.mdx",
+      "category": "guides",
+      "title": "一个半月高强度 Claude Code 使用后感受 | Killer Code"
+    },
+    {
+      "source": "docs_zh_best-practices_six-weeks-of-claude-code.md",
+      "target": "docs/guides/best-practices_six-weeks-of-claude-code.mdx",
+      "category": "guides",
+      "title": "使用 Claude Code 的六周回顾 | Killer Code"
+    },
+    {
+      "source": "docs_zh_community-tips.md",
+      "target": "docs/guides/community-tips.mdx",
+      "category": "guides",
+      "title": "社区技巧 | Killer Code"
+    },
+    {
+      "source": "docs_zh_community-tips_claude-code-life-os.md",
+      "target": "docs/guides/community-tips_claude-code-life-os.mdx",
+      "category": "guides",
+      "title": "Claude Code 生活操作系统：5个日常生产力自动化技巧 | Killer Code"
+    },
+    {
+      "source": "docs_zh_community-tips_code-simplifier-agent.md",
+      "target": "docs/guides/community-tips_code-simplifier-agent.mdx",
+      "category": "guides",
+      "title": "代码简化代理：防止 Claude Code 代码膨胀 | Killer Code"
+    },
+    {
+      "source": "docs_zh_community-tips_fradser-trust-init-command.md",
+      "target": "docs/guides/community-tips_fradser-trust-init-command.mdx",
+      "category": "guides",
+      "title": "FradSer：信任 /init 命令 | Killer Code"
+    },
+    {
+      "source": "docs_zh_cursor.md",
+      "target": "docs/integrations/cursor.mdx",
+      "category": "integrations",
+      "title": "Cursor | Killer Code"
+    },
+    {
+      "source": "docs_zh_cursor_building-cursor-with-cursor.md",
+      "target": "docs/integrations/cursor_building-cursor-with-cursor.mdx",
+      "category": "integrations",
+      "title": "用 Cursor 构建 Cursor：一个真实案例 | Killer Code"
+    },
+    {
+      "source": "docs_zh_sub-agents.md",
+      "target": "docs/advanced/sub-agents.mdx",
+      "category": "advanced",
+      "title": "子代理 | Killer Code"
+    },
+    {
+      "source": "docs_zh_sub-agents_gemini-cli-subagent-tutorial.md",
+      "target": "docs/advanced/sub-agents_gemini-cli-subagent-tutorial.mdx",
+      "category": "advanced",
+      "title": "在 Claude Code 中创建 Gemini CLI 驱动的子代理：完整教程 | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools.md",
+      "target": "docs/tools/tools.mdx",
+      "category": "tools",
+      "title": "工具 | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools_ccpm-claude-code-project-manager.md",
+      "target": "docs/tools/tools_ccpm-claude-code-project-manager.mdx",
+      "category": "tools",
+      "title": "CCPM：Claude Code 项目管理器 | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools_claude-code-router.md",
+      "target": "docs/tools/tools_claude-code-router.mdx",
+      "category": "tools",
+      "title": "Claude Code Router | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools_claude-code-templates.md",
+      "target": "docs/tools/tools_claude-code-templates.mdx",
+      "category": "tools",
+      "title": "Claude Code Templates: 配置和监控 Claude Code 的 CLI 工具 | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools_context-engineering.md",
+      "target": "docs/tools/tools_context-engineering.mdx",
+      "category": "tools",
+      "title": "Context Engineering 模板：让 AI 编码助手真正落地的系统方法 | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools_cui-web-ui.md",
+      "target": "docs/tools/tools_cui-web-ui.mdx",
+      "category": "tools",
+      "title": "CUI: Claude Code Web UI | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools_happy-mobile-claude-code-client.md",
+      "target": "docs/tools/tools_happy-mobile-claude-code-client.mdx",
+      "category": "tools",
+      "title": "Happy：Claude Code 的移动端和网页客户端 | Killer Code"
+    },
+    {
+      "source": "docs_zh_tools_you-are-not-right-hook.md",
+      "target": "docs/tools/tools_you-are-not-right-hook.mdx",
+      "category": "tools",
+      "title": "Claude Code Hook: 防止敷衍回复 | Killer Code"
+    }
+  ],
+  "categories": [
+    "guides",
+    "advanced",
+    "integrations",
+    "tools"
+  ]
+}

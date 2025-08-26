@@ -1,0 +1,96 @@
+[Killer Code](/)
+
+Search
+
+⌘K
+
+[Best Practices](/docs)[Cookbook](https://github.com/foreveryh/claude-code-cookbook)[Official Docs](https://claude.ai/code)[Build with Claude](https://www.anthropic.com/learn/build-with-claude)[Author](https://x.com/Stephen4171127)[首页](/docs)
+
+[Claude Code Documentation](/docs/en)
+
+[Claude Code 文档中心](/docs/zh)
+
+[高级](/docs/zh/advanced)
+
+[手把手教你逆向Claude Code：如何监控AI每一次'内心独白'？](/docs/zh/advanced/claude-code-reverse-analysis)[复合式工程：构建自我改进的开发系统](/docs/zh/advanced/compounding-engineering)[是什么让 Claude Code 如此出色（以及如何在你的智能体中重现这种魔力）!?](/docs/zh/advanced/decoding-claude-code-analysis)
+
+[最佳实践](/docs/zh/best-practices)
+
+[社区技巧](/docs/zh/community-tips)
+
+[Cursor](/docs/zh/cursor)
+
+[子代理](/docs/zh/sub-agents)
+
+[工具](/docs/zh/tools)
+
+[Claude Code 文档中心](/docs/zh)
+
+# 高级
+
+ClaudeCode 的高级技术和概念
+
+# [高级](#高级)
+
+欢迎来到 高级 专区！在这里您将找到关于 高级 的宝贵资源和指南。
+
+## [您可以在这里找到](#您可以在这里找到)
+
+本专区包含：
+
+*   **实用指南**：高级 的详细使用指南
+*   **最佳实践**：经过验证的最佳实践和技巧
+*   **案例研究**：真实世界的应用案例
+*   **高级技巧**：提升效率的高级技巧
+
+## [精选文章](#精选文章)
+
+[
+
+### 复合式工程：构建自我改进的开发系统
+
+学习如何构建随着每次迭代变得更快、更安全、更优秀的开发系统。将你的工程工作流程从短期收益转变为永久改进。
+
+](/docs/zh/advanced/compounding-engineering)[
+
+### 是什么让 Claude Code 如此出色（以及如何在你的智能体中重现这种魔力）!?
+
+深入分析 Claude Code 的核心设计原理，揭示如何构建出色的大语言模型编程代理
+
+](/docs/zh/advanced/decoding-claude-code-analysis)[
+
+### 手把手教你逆向Claude Code：如何监控AI每一次'内心独白'？
+
+通过技术手段逆向分析Claude Code的API交互过程，揭秘AI编程之王的多模型协作策略、精巧的系统提示词设计和智能工具调用机制。
+
+](/docs/zh/advanced/claude-code-reverse-analysis)
+
+## [开始使用](#开始使用)
+
+无论您是初学者还是经验丰富的用户，这些文章都将帮助您更好地理解和使用 高级。
+
+## [贡献](#贡献)
+
+有好的内容要分享吗？我们欢迎社区贡献！请遵循我们的贡献指南，帮助让这个资源变得更好。
+
+* * *
+
+_探索这些文章，提升您的 高级 使用体验！_
+
+[
+
+Claude Code 文档中心
+
+Claude Code 官方文档、指南、教程和最佳实践
+
+](/docs/zh)[
+
+手把手教你逆向Claude Code：如何监控AI每一次'内心独白'？
+
+通过技术手段逆向分析Claude Code的API交互过程，揭秘AI编程之王的多模型协作策略、精巧的系统提示词设计和智能工具调用机制。
+
+](/docs/zh/advanced/claude-code-reverse-analysis)
+
+### On this page
+
+[高级](#高级)[您可以在这里找到](#您可以在这里找到)[精选文章](#精选文章)[开始使用](#开始使用)[贡献](#贡献)

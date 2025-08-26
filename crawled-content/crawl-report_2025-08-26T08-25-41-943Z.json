@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "totalTargets": 3,
+    "successfulCrawls": 3,
+    "failedCrawls": 0,
+    "crawledAt": "2025-08-26T08:25:41.943Z"
+  },
+  "results": [
+    {
+      "target": {
+        "url": "https://docs.ctok.ai/",
+        "name": "ctok-docs",
+        "description": "Ctok 官方文档站点"
+      },
+      "success": true,
+      "files": {
+        "markdownPath": "ctok-docs_2025-08-26T08-25-32-270Z.md",
+        "htmlPath": "ctok-docs_2025-08-26T08-25-32-270Z.html",
+        "metadataPath": "ctok-docs_2025-08-26T08-25-32-270Z_metadata.json",
+        "rawDataPath": "ctok-docs_2025-08-26T08-25-32-270Z_raw.json"
+      },
+      "error": null
+    },
+    {
+      "target": {
+        "url": "https://cc.deeptoai.com/docs/zh",
+        "name": "claude-code-docs",
+        "description": "Claude Code 中文文档中心"
+      },
+      "success": true,
+      "files": {
+        "markdownPath": "claude-code-docs_2025-08-26T08-25-37-048Z.md",
+        "htmlPath": "claude-code-docs_2025-08-26T08-25-37-048Z.html",
+        "metadataPath": "claude-code-docs_2025-08-26T08-25-37-048Z_metadata.json",
+        "rawDataPath": "claude-code-docs_2025-08-26T08-25-37-048Z_raw.json"
+      },
+      "error": null
+    },
+    {
+      "target": {
+        "url": "https://github.com/foreveryh/claude-code-cookbook/blob/main/README_zh.md",
+        "name": "cookbook-readme",
+        "description": "GitHub 中文版 Cookbook"
+      },
+      "success": true,
+      "files": {
+        "markdownPath": "cookbook-readme_2025-08-26T08-25-41-906Z.md",
+        "htmlPath": "cookbook-readme_2025-08-26T08-25-41-906Z.html",
+        "metadataPath": "cookbook-readme_2025-08-26T08-25-41-906Z_metadata.json",
+        "rawDataPath": "cookbook-readme_2025-08-26T08-25-41-906Z_raw.json"
+      },
+      "error": null
+    }
+  ],
+  "config": {
+    "apiKey": "fc-e44ab01...",
+    "maxRetries": 3,
+    "retryDelay": 2000
+  }
+}

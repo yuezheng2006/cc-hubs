@@ -1,0 +1,11 @@
+{
+  "url": "https://cc.deeptoai.com/docs/zh",
+  "name": "claude-code-docs",
+  "description": "Claude Code 中文文档中心",
+  "title": "Claude Code 文档中心 | Killer Code",
+  "description_meta": "Claude Code 官方文档、指南、教程和最佳实践",
+  "crawledAt": "2025-08-26T08:25:37.050Z",
+  "success": true,
+  "hasMarkdown": true,
+  "hasHtml": true
+}

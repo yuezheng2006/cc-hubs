@@ -1,0 +1,8 @@
+{
+  "url": "https://cc.deeptoai.com/docs/zh/tools/you-are-not-right-hook",
+  "title": "Claude Code Hook: 防止敷衍回复 | Killer Code",
+  "description": "一个用于防止 Claude Code 使用敷衍性回复的钩子脚本，通过检测'你是对的'等表达来提升对话质量",
+  "keywords": "Claude Code, AI Programming, Vibe Coding, AI Development, Programming Tools, Anthropic, Code Generation",
+  "crawledAt": "2025-08-26T09:19:29.247Z",
+  "linksCount": 91
+}
