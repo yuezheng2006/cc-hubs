@@ -67,3 +67,4 @@ crawled-data/
 # Test files
 test-output/
 *.test.js.snap
+.vercel

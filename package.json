@@ -4,9 +4,9 @@
   "description": "Claude Code 最佳实践文档中心 - 集中化的文档平台，自动爬取和整合最佳实践资源",
   "main": "index.js",
   "scripts": {
-    "dev": "mintlify dev",
-    "build": "node scripts/build.js",
-    "preview": "mintlify dev",
+    "dev": "mint dev",
+    "build": "echo 'Using Mintlify hosting'",
+    "preview": "mint dev",
     "check-links": "mintlify broken-links docs",
     "crawl:ctok": "node scripts/crawlers/ctok-crawler.js",
     "crawl:cookbook": "node scripts/crawlers/cookbook-crawler.js",
