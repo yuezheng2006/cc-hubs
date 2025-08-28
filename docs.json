@@ -5,7 +5,7 @@
   "theme": "mint",
   "modeToggle": {
     "default": "dark",
-    "isHidden": false
+    "isHidden": true
   },
   "logo": {
     "light": "/images/light.svg",
@@ -15,11 +15,7 @@
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
-    "dark": "#0A6B56",
-    "background": {
-      "light": "#ffffff",
-      "dark": "#0d1117"
-    }
+    "dark": "#0A6B56"
   },
   "navbar": {
     "links": [
