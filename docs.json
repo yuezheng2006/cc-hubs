@@ -13,28 +13,18 @@
     "light": "#07C983",
     "dark": "#0A6B56"
   },
-  "topbarLinks": [
-    {
-      "name": "GitHub",
-      "url": "https://github.com/anthropics/claude-code"
-    },
-    {
-      "name": "官方文档",
-      "url": "https://claude.ai/code"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Claude Code 官方",
-      "icon": "globe",
-      "url": "https://claude.ai/code"
-    },
-    {
-      "name": "社区讨论",
-      "icon": "discord",
-      "url": "https://github.com/anthropics/claude-code/discussions"
-    }
-  ],
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/anthropics/claude-code"
+      },
+      {
+        "label": "官方文档",
+        "href": "https://claude.ai/code"
+      }
+    ]
+  },
   "mermaid": true,
   "codeblocks": {
     "syntaxHighlighting": {
@@ -65,24 +55,25 @@
       "sql": true
     }
   },
-  "footerSocials": {
-    "github": "https://github.com/anthropics/claude-code",
-    "website": "https://claude.ai/code"
+  "footer": {
+    "socials": {
+      "github": "https://github.com/anthropics/claude-code",
+      "website": "https://claude.ai/code"
+    }
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "快速开始",
-        "pages": [
-          "introduction",
-          "docs/guides/claude-code-official-docs",
-          "docs/guides/claude-code-cookbook",
-          "docs/setup/installation-guide"
-        ]
-      },
-      {
-        "group": "实践指南",
-        "pages": [
+        "tab": "指南文档",
+        "groups": [
+          {
+            "group": "快速开始",
+            "pages": [
+              "introduction",
+              "docs/guides/claude-code-official-docs",
+              "docs/guides/claude-code-cookbook"
+            ]
+          },
           {
             "group": "最佳实践",
             "pages": [
@@ -122,28 +113,72 @@
         ]
       },
       {
-        "group": "工具扩展", 
-        "pages": [
-          "docs/tools/ccpm-project-manager",
-          "docs/tools/claude-code-router", 
-          "docs/tools/claude-code-templates",
-          "docs/tools/context-engineering",
-          "docs/tools/cui-web-ui",
-          "docs/tools/happy-mobile-client",
-          "docs/tools/you-are-not-right-hook",
-          "docs/tools/claude-subagents-guide",
-          "docs/tools/claude-version-comparison"
+        "tab": "工具扩展",
+        "groups": [
+          {
+            "group": "开发工具",
+            "pages": [
+              "docs/tools/ccpm-project-manager",
+              "docs/tools/claude-code-router", 
+              "docs/tools/claude-code-templates",
+              "docs/tools/context-engineering"
+            ]
+          },
+          {
+            "group": "界面工具",
+            "pages": [
+              "docs/tools/cui-web-ui",
+              "docs/tools/happy-mobile-client",
+              "docs/tools/you-are-not-right-hook"
+            ]
+          },
+          {
+            "group": "智能代理",
+            "pages": [
+              "docs/tools/claude-subagents-guide",
+              "docs/tools/claude-version-comparison"
+            ]
+          }
         ]
       },
       {
-        "group": "高级进阶",
-        "pages": [
-          "docs/advanced/advanced_claude-code-reverse-analysis",
-          "docs/advanced/advanced_compounding-engineering", 
-          "docs/advanced/advanced_decoding-claude-code-analysis",
-          "docs/advanced/sub-agents_gemini-cli-subagent-tutorial"
+        "tab": "高级进阶",
+        "groups": [
+          {
+            "group": "技术分析",
+            "pages": [
+              "docs/advanced/advanced_claude-code-reverse-analysis",
+              "docs/advanced/advanced_compounding-engineering", 
+              "docs/advanced/advanced_decoding-claude-code-analysis"
+            ]
+          },
+          {
+            "group": "子代理开发",
+            "pages": [
+              "docs/advanced/sub-agents_gemini-cli-subagent-tutorial"
+            ]
+          }
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Claude Code 官方",
+          "href": "https://claude.ai/code",
+          "icon": "globe"
+        },
+        {
+          "anchor": "GitHub 仓库",
+          "href": "https://github.com/anthropics/claude-code",
+          "icon": "github"
+        },
+        {
+          "anchor": "社区讨论",
+          "href": "https://github.com/anthropics/claude-code/discussions",
+          "icon": "comments"
+        }
+      ]
+    }
   }
 }
