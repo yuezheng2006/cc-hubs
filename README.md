@@ -1,6 +1,6 @@
-# Claude Code 最佳实践文档中心
+# CC-Hubs - Claude Code 最佳实践文档中心
 
-> 集中化的 Claude Code 最佳实践文档平台，自动爬取和整合优质资源
+> 集中化的 Claude Code 最佳实践文档平台，整合社区优质资源
 
 ## 📖 项目简介
 
@@ -120,10 +120,22 @@ npm run validate:content # 验证内容格式
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
+## 🚀 部署信息
+
+### 生产站点
+- **文档站点**: [cc.cyber101.cc](https://cc.cyber101.cc)
+- **Mintlify 管理面板**: [dashboard.mintlify.com/personal-f200c047/personal-f200c047](https://dashboard.mintlify.com/personal-f200c047/personal-f200c047)
+
+### 部署状态
+- **平台**: Mintlify Cloud
+- **自定义域名**: cc.cyber101.cc
+- **GitHub 仓库**: [yuezheng2006/cc-hubs](https://github.com/yuezheng2006/cc-hubs)
+
 ## 🔗 相关链接
 
-- [文档站点](https://your-docs-site.vercel.app)
-- [问题反馈](https://github.com/your-username/claude-code-best-practices-hub/issues)
+- [Claude Code 官方](https://claude.ai/code)
+- [GitHub 仓库](https://github.com/yuezheng2006/cc-hubs)
+- [问题反馈](https://github.com/yuezheng2006/cc-hubs/issues)
 - [Mintlify 文档](https://mintlify.com/docs)
 
 ---
