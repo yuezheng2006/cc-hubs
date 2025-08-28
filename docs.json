@@ -3,46 +3,145 @@
   "name": "CC-Hubs",
   "description": "Claude Code Best Practices Hub - 一个全面的代码实践技巧社区",
   "theme": "mint",
-  "favicon": "/logo/light.svg",
+  "logo": {
+    "light": "/images/light.svg",
+    "dark": "/images/dark.svg"
+  },
+  "favicon": "/images/light.svg",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
-    "dark": "#0D9373"
+    "dark": "#0A6B56"
+  },
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/anthropics/claude-code"
+    },
+    {
+      "name": "官方文档",
+      "url": "https://claude.ai/code"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Claude Code 官方",
+      "icon": "globe",
+      "url": "https://claude.ai/code"
+    },
+    {
+      "name": "社区讨论",
+      "icon": "discord",
+      "url": "https://github.com/anthropics/claude-code/discussions"
+    }
+  ],
+  "mermaid": true,
+  "codeblocks": {
+    "syntaxHighlighting": {
+      "theme": "github"
+    },
+    "languageSupport": {
+      "javascript": true,
+      "typescript": true,
+      "python": true,
+      "bash": true,
+      "shell": true,
+      "json": true,
+      "yaml": true,
+      "markdown": true,
+      "html": true,
+      "css": true,
+      "jsx": true,
+      "tsx": true,
+      "go": true,
+      "rust": true,
+      "java": true,
+      "cpp": true,
+      "c": true,
+      "swift": true,
+      "kotlin": true,
+      "php": true,
+      "ruby": true,
+      "sql": true
+    }
+  },
+  "footerSocials": {
+    "github": "https://github.com/anthropics/claude-code",
+    "website": "https://claude.ai/code"
   },
   "navigation": {
     "groups": [
       {
-        "group": "开始使用",
-        "pages": [
-          "docs/introduction"
-        ]
-      },
-      {
-        "group": "指南与最佳实践",
+        "group": "快速开始",
         "pages": [
           "docs/guides/claude-code-official-docs",
           "docs/guides/claude-code-cookbook",
-          "docs/guides/best-practices",
-          "docs/guides/community-tips"
+          "docs/setup/installation-guide"
         ]
       },
       {
-        "group": "工具与扩展",
+        "group": "实践指南",
         "pages": [
-          "docs/tools/tools"
+          {
+            "group": "最佳实践",
+            "pages": [
+              "docs/guides/best-practices",
+              "docs/guides/core-best-practices",
+              "docs/guides/ai-development-guide", 
+              "docs/guides/shipping-real-code",
+              "docs/guides/production-workflow",
+              "docs/guides/builder-guide",
+              "docs/guides/onevcat-experience",
+              "docs/guides/claude-as-computer",
+              "docs/guides/how-i-use-claude",
+              "docs/guides/six-weeks-experience",
+              "docs/guides/coding-evolution",
+              "docs/guides/cal-rueb-tips",
+              "docs/guides/setup-tips"
+            ]
+          },
+          {
+            "group": "社区技巧", 
+            "pages": [
+              "docs/guides/community-tips",
+              "docs/guides/code-simplifier",
+              "docs/guides/trust-init-command",
+              "docs/guides/claude-life-os"
+            ]
+          },
+          {
+            "group": "进阶技巧",
+            "pages": [
+              "docs/guides/claude-complete-guide",
+              "docs/guides/claude-best-practices", 
+              "docs/guides/claude-23-practical-tips",
+              "docs/guides/claude-34-tips",
+              "docs/guides/claude-vibe-workflow"
+            ]
+          }
         ]
       },
       {
-        "group": "高级主题",
+        "group": "工具扩展", 
         "pages": [
-          "docs/advanced/advanced",
-          "docs/advanced/sub-agents"
+          "docs/tools/ccpm-project-manager",
+          "docs/tools/claude-code-router", 
+          "docs/tools/claude-code-templates",
+          "docs/tools/context-engineering",
+          "docs/tools/cui-web-ui",
+          "docs/tools/happy-mobile-client",
+          "docs/tools/you-are-not-right-hook",
+          "docs/tools/claude-subagents-guide",
+          "docs/tools/claude-version-comparison"
         ]
       },
       {
-        "group": "集成",
+        "group": "高级进阶",
         "pages": [
-          "docs/integrations/cursor"
+          "docs/advanced/advanced_claude-code-reverse-analysis",
+          "docs/advanced/advanced_compounding-engineering", 
+          "docs/advanced/advanced_decoding-claude-code-analysis",
+          "docs/advanced/sub-agents_gemini-cli-subagent-tutorial"
         ]
       }
     ]

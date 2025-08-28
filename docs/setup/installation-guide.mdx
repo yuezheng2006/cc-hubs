@@ -1,0 +1,285 @@
+---
+title: "Claude Code 安装配置指南"
+description: "Claude Code 完整安装和配置指南，适用于 Windows、macOS 和 Linux"
+---
+
+
+> 本指南将帮助您完成安装和配置。
+
+## 📦 系统要求
+
+- **操作系统**: Windows 10+、macOS 10.15+、Linux
+- **Node.js**: 18.0+ (推荐 LTS 版本)
+- **终端**: 支持 ANSI 颜色的现代终端
+
+## 🚀 快速安装
+
+### 方法一：NPM 安装（推荐）
+```bash
+npm install -g claude-code
+```
+
+### 方法二：官方安装脚本
+```bash
+# macOS/Linux
+curl -sSL https://claude.ai/install.sh | sh
+
+# Windows (PowerShell)
+iwr https://claude.ai/install.ps1 | iex
+```
+
+## ⚙️ 环境配置
+
+### 获取 API 密钥
+1. 访问 [Claude.ai](https://claude.ai)
+2. 注册并登录账户
+3. 获取您的 API 密钥
+
+### 设置环境变量
+
+#### Windows 配置
+
+**方法1：PowerShell（临时）**
+```powershell
+$env:ANTHROPIC_API_KEY = "your-api-key-here"
+```
+
+**方法2：永久设置**
+```cmd
+setx ANTHROPIC_API_KEY "your-api-key-here"
+```
+
+**方法3：图形界面设置**
+1. 右键"此电脑" → "属性"
+2. 点击"高级系统设置"
+3. 点击"环境变量"
+4. 添加新的用户变量：`ANTHROPIC_API_KEY`
+
+#### macOS/Linux 配置
+
+**临时设置**
+```bash
+export ANTHROPIC_API_KEY="your-api-key-here"
+```
+
+**永久设置**
+```bash
+# 添加到 ~/.bashrc 或 ~/.zshrc
+echo 'export ANTHROPIC_API_KEY="your-api-key-here"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+### 验证安装
+```bash
+# 检查版本
+claude --version
+
+# 测试连接
+claude "Hello, Claude!"
+
+# 查看配置
+claude config list
+```
+
+## 🔧 基础配置
+
+### 设置默认模型
+```bash
+# 使用 Sonnet 4（推荐）
+claude config set model claude-sonnet-4
+
+# 使用 Opus 4（最强能力）
+claude config set model claude-opus-4
+
+# 使用 Haiku 3.5（最快速度）
+claude config set model claude-haiku-3.5
+```
+
+### 配置输出偏好
+```bash
+# 设置最大token数
+claude config set max-tokens 4000
+
+# 设置创造性参数
+claude config set temperature 0.7
+
+# 启用流式输出
+claude config set stream true
+```
+
+## 🛠️ MCP 服务器配置
+
+MCP（模型上下文协议）允许 Claude Code 连接外部工具和服务。
+
+### 查看可用 MCP
+```bash
+claude mcp list
+```
+
+### 安装常用 MCP 服务器
+
+**文件系统访问**
+```bash
+claude mcp add filesystem -s user -- npx -y @modelcontextprotocol/server-filesystem ~/Documents ~/Desktop
+```
+
+**GitHub 集成**
+```bash
+claude mcp add github -s user -e GITHUB_TOKEN=your_token -- npx @modelcontextprotocol/server-github
+```
+
+**浏览器自动化**
+```bash
+claude mcp add playwright -s user -- npx @playwright/mcp@latest
+```
+
+**数据库连接**
+```bash
+claude mcp add postgres -s user -e DATABASE_URL=your_db_url -- npx @modelcontextprotocol/server-postgres
+```
+
+### MCP 管理命令
+```bash
+# 查看 MCP 状态
+claude mcp status
+
+# 移除 MCP 服务器
+claude mcp remove server-name -s user
+
+# 重启 MCP 服务器
+claude mcp restart server-name
+```
+
+## 📝 基础使用
+
+### 启动 Claude Code
+```bash
+# 进入交互模式
+claude
+
+# 一次性询问
+claude "解释这段代码的功能"
+
+# 处理文件内容
+cat main.py | claude "优化这段Python代码"
+```
+
+### 常用命令
+```bash
+# 代码分析
+claude "分析项目架构并提出改进建议"
+
+# 错误调试
+claude "分析这个错误日志并提供修复方案"
+
+# 代码生成
+claude "创建一个用户认证的REST API"
+
+# 代码重构
+claude "重构这个函数以提高可读性"
+```
+
+### Git 工作流集成
+```bash
+# 分析代码变更
+git diff | claude "解释这次改动的影响"
+
+# 生成提交消息
+git diff --staged | claude "为这些更改生成语义化的提交消息"
+
+# 代码审查
+claude "审查这个PR，关注安全性和性能"
+```
+
+## 🎯 项目配置
+
+### 创建项目配置文件
+
+**CLAUDE.md** - 项目上下文和偏好
+```markdown
+# 项目配置
+
+## 技术栈
+- React 18 + TypeScript
+- Node.js + Express  
+- PostgreSQL 数据库
+- Docker 容器化
+
+## 编码规范
+- 使用 ESLint + Prettier
+- 函数命名采用 camelCase
+- 组件使用 PascalCase
+- 优先使用函数式组件
+
+## 测试要求
+- 单元测试覆盖率 > 80%
+- 使用 Jest + Testing Library
+- API 端点需要集成测试
+```
+
+**settings.json** - Claude Code 配置
+```json
+{
+  "model": "claude-sonnet-4",
+  "max-tokens": 4000,
+  "temperature": 0.3,
+  "auto-commit": false,
+  "code-style": "严格模式",
+  "language": "zh-CN"
+}
+```
+
+## 🔍 故障排除
+
+### 常见问题
+
+**API 连接失败**
+```bash
+# 检查网络连接
+curl -I https://api.anthropic.com
+
+# 验证 API 密钥
+claude config get api-key
+```
+
+**MCP 服务器无法启动**
+```bash
+# 检查 MCP 状态
+claude mcp status
+
+# 重启特定服务器
+claude mcp restart server-name
+
+# 查看详细错误日志
+claude --debug mcp list
+```
+
+**性能问题**
+```bash
+# 启用缓存
+claude config set cache true
+
+# 限制并发连接
+claude config set max-concurrent 2
+
+# 增加超时时间
+claude config set timeout 60
+```
+
+## 📚 学习资源
+
+- [Claude Code 官方文档](https://docs.anthropic.com/claude-code)
+- [最佳实践指南](/guides/best-practices)
+- [高级功能教程](/advanced/advanced)
+- [社区技巧分享](/guides/community-tips)
+
+## 🔗 相关链接
+
+- [GitHub 仓库](https://github.com/anthropics/claude-code)
+- [官方网站](https://claude.ai/code)
+- [API 文档](https://docs.anthropic.com/api)
+- [社区论坛](https://github.com/anthropics/claude-code/discussions)
+
+---
+
+完成配置后，您就可以开始使用 Claude Code 来提升开发效率了！建议先从简单的代码分析任务开始，逐步探索更高级的功能。

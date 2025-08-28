@@ -1,0 +1,53 @@
+<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="darkBrain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="50%" style="stop-color:#5b73ff"/>
+      <stop offset="100%" style="stop-color:#c44fff"/>
+    </linearGradient>
+    <linearGradient id="darkText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#ffffff"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="120" fill="#1a1a2e"/>
+  
+  <!-- Brain Circuit Icon -->
+  <g transform="translate(40, 60)" fill="url(#darkBrain)" stroke="url(#darkBrain)" stroke-width="1.5">
+    <!-- Left hemisphere -->
+    <path d="M-15,0 Q-20,-8 -15,-16 Q-10,-20 -5,-16 Q0,-10 -5,-5 Q-10,0 -15,0 Z" fill="none"/>
+    <path d="M-13,-3 Q-8,-7 -3,-3" fill="none"/>
+    <path d="M-14,-9 Q-9,-13 -4,-9" fill="none"/>
+    
+    <!-- Right hemisphere -->
+    <path d="M15,0 Q20,-8 15,-16 Q10,-20 5,-16 Q0,-10 5,-5 Q10,0 15,0 Z" fill="none"/>
+    <path d="M13,-3 Q8,-7 3,-3" fill="none"/>
+    <path d="M14,-9 Q9,-13 4,-9" fill="none"/>
+    
+    <!-- Center connection -->
+    <path d="M-5,-8 L5,-8" fill="none"/>
+    
+    <!-- Circuit nodes -->
+    <circle cx="-10" cy="-8" r="1"/>
+    <circle cx="0" cy="-8" r="1.5"/>
+    <circle cx="10" cy="-8" r="1"/>
+    
+    <!-- Neural connections -->
+    <line x1="-10" y1="-8" x2="-18" y2="-12" stroke-width="0.8" opacity="0.6"/>
+    <line x1="10" y1="-8" x2="18" y2="-12" stroke-width="0.8" opacity="0.6"/>
+    <line x1="0" y1="-8" x2="0" y2="-16" stroke-width="0.8" opacity="0.6"/>
+  </g>
+  
+  <!-- CC Text -->
+  <g transform="translate(80, 75)" fill="url(#darkText)" font-family="Arial, sans-serif" font-weight="bold">
+    <text x="0" y="0" font-size="32" letter-spacing="2">CC</text>
+  </g>
+  
+  <!-- Best Practices Text -->
+  <g transform="translate(130, 45)" fill="#cccccc" font-family="Arial, sans-serif" font-weight="600">
+    <text x="0" y="0" font-size="14" letter-spacing="1">CLAUDE CODE</text>
+    <text x="0" y="20" font-size="12" letter-spacing="1" fill="#999999">BEST PRACTICES</text>
+  </g>
+</svg>
