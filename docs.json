@@ -3,6 +3,9 @@
   "name": "CC-Hubs",
   "description": "Claude Code Best Practices Hub - 一个全面的代码实践技巧社区",
   "theme": "mint",
+  "modeToggle": {
+    "default": "dark"
+  },
   "logo": {
     "light": "/images/light.svg",
     "dark": "/images/dark.svg"
@@ -28,7 +31,7 @@
   "mermaid": true,
   "codeblocks": {
     "syntaxHighlighting": {
-      "theme": "github"
+      "theme": "github-dark"
     },
     "languageSupport": {
       "javascript": true,
